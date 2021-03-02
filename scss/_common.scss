@@ -1,0 +1,133 @@
+@import "variable";
+@import "media-query";
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100px;
+}
+
+body {
+  font-size: 0.16rem;
+  line-height: 1.5;
+  letter-spacing: .05em;
+  font-family:  "Noto Serif","Noto Serif JP", serif;
+  font-weight: 400;
+  color: $color-font;
+  overflow-wrap: break-word;
+}
+h1,
+h2 {
+  font-size: 0.6rem;
+}
+h3,
+h4 {
+  font-size: 0.48rem;
+}
+h5,
+h6 {
+  font-size: 0.24rem;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.sm-br {
+  display: none;
+  @include mq("sm") {
+    display: inline;
+  }
+}
+
+@include mq("sm") {
+  .without-sm {
+    display: none;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.section {
+  padding: 100px 0 120px 0;
+  @include mq("tab") {
+    padding: 75x 0 95px 0;
+  }
+  @include mq("sm") {
+    padding: 50px 0 70px 0;
+  }
+}
+
+.inner {
+  width: 85%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  @include mq("sm") {
+    width: 92%;
+    // max-width: 345px;
+  }
+}
+
+.container {
+  width: 85%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  @include mq("sm") {
+    width: 100%;
+  }
+}
+
+@mixin section-title($color) {
+  display: inline-block;
+  font-size: 60px;
+  line-height: 1;
+  font-style: italic;
+  color: $color;
+  position: relative;
+  &::after {
+    content: "";
+    width: 200px;
+    border-bottom: 5px solid $color;
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translate(100%, -50%);
+  }
+  @include mq("sm") {
+    font-size: 30px;
+    line-height: (48 / 30);
+    &::after {
+      width: 100px;
+      right: -30px;
+    }
+  }
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.btn {
+  display: block;
+  width: 235px;
+  height: 60px;
+  background: $btn-bg;
+  color: $color-font;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  &:hover {
+    background: darken($btn-bg, 12%);
+  }
+}
